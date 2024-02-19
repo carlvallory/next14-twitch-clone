@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
-import React from "react";
+import Link from "next/link";
 
-export const SignInButton = ({ children }: { children: React.ReactNode}) => {
+export const SignInButton = () => {
     return (
-        <div>
-            {children}
-        </div>
+        <Button variant="primary" size="sm">
+            <Link href="/sign-in">
+            Login
+            </Link>
+        </Button>
     );
 };
