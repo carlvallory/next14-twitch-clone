@@ -5,7 +5,7 @@ const { auth: middleware } = NextAuth(authConfig);
 
 const authPaths = [
     "/sign-in",
-    "/sign-up"
+    "/sign-up",
 ];
 
 export default middleware((request) => {
@@ -14,15 +14,15 @@ export default middleware((request) => {
             const redirectUrl = new URL("/", request.url);
             return Response.redirect(redirectUrl);
         }
+    } else {
+
+        if(!request.auth) {
+            const redirectUrl = new URL("/sign-in", request.url);
+            return Response.redirect(redirectUrl);
+        }
     }
 
-    /* if(!request.auth) {
-        const redirectUrl = new URL("/sign-in", request.url);
-        return Response.redirect(redirectUrl);
-    }
-
-    return Response.redirect(new URL("/", request.url)); */
-
+    return null;
 });
 
 export const config = {
