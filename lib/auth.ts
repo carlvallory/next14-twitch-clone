@@ -1,3 +1,4 @@
+import { auth } from "@/next-auth"
 
 export const useAuth = () => {
     // const auth = useClerkAuth();
@@ -12,7 +13,6 @@ export const useUser = () => {
 }
 
 export const currentUser = async () => {
-    // const user = await clerkCurrentUser();
-    // return user;
-    return null;
+    const session = await auth();
+    return session?.user;
 }
