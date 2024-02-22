@@ -24,7 +24,7 @@ export const Actions = ({
 }: ActionsProps) => {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
-  const { userId } = useAuth();
+  const user = useAuth();
 
   const handleFollow = () => {
     startTransition(() => {
@@ -43,7 +43,7 @@ export const Actions = ({
   }
 
   const toggleFollow = () => {
-    if (!userId) {
+    if (!user) {
       return router.push("/sign-in");
     }
 
